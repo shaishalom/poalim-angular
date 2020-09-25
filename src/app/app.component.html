@@ -1,0 +1,31 @@
+
+<div class="container">
+  <h2>Poalim Angular Test</h2>
+  <div class="row">
+    <nav class="navbar">
+      Invoke status:{{result.success}}     
+    </nav>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th (click)="sort('id')">id<i class="fa" *ngIf="key =='id'" [ngClass]="{'fa-sort-desc':reverse,'fa-sort-asc':!reverse}"></i></th>
+          <th (click)="sort('name')">name<i class="fa" *ngIf="key =='name'" [ngClass]="{'fa-sort-desc':reverse,'fa-sort-asc':!reverse}"></i></th>
+          <th (click)="sort('money')">money<i class="fa" *ngIf="key =='money'" [ngClass]="{'fa-sort-desc':reverse,'fa-sort-asc':!reverse}"></i></th>
+          <th (click)="sort('money')">esek<i class="fa" *ngIf="key =='esek'" [ngClass]="{'fa-sort-desc':reverse,'fa-sort-asc':!reverse}"></i></th>
+          <th (click)="sort('ccno')">ccno<i class="fa" *ngIf="key =='ccno'" [ngClass]="{'fa-sort-desc':reverse,'fa-sort-asc':!reverse}"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let n of tnuot ; let i = index">
+          <td>{{n.id}}</td>
+          <td>{{n.name}}</td>
+          <td>{{n.money}}</td>
+          <td>{{n.esek}}</td>
+          <td>{{n.ccno}}</td>
+        </tr>
+      </tbody>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </table>
+  </div>
+</div>
