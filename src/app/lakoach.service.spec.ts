@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { NewsService } from './news.service';
+import { LakoachService } from './lakoach.service';
 
 describe('NewsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [NewsService]
+      providers: [LakoachService]
     });
   });
 
-  it('should be created', inject([NewsService], (service: NewsService) => {
+  it('should be created', inject([LakoachService], (service: LakoachService) => {
     expect(service).toBeTruthy();
   }));
 });

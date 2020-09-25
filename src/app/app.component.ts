@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { GetTnuotAggregate } from './get-tnuot-aggregate';
-import { LakoachTnuaa } from './MODEL/lakoach-tnuaa';
+import { LakoachTnuaa } from './lakoach-tnuaa';
 import {News} from './News';
-import { NewsService } from './news.service';
+import { LakoachService } from './lakoach.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ export class AppComponent {
   tnuot: LakoachTnuaa[];
   result : GetTnuotAggregate;
   
-    constructor(private newsService: NewsService) {
+    constructor(private newsService: LakoachService) {
       //  this.newsService.getTnuotAggregateQuery().subscribe(data => {
       //       console.log("data coming:", data);
       //       //this.tnuot.push(data.shift());

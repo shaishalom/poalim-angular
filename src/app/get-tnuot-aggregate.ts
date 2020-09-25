@@ -1,5 +1,5 @@
 
-import { LakoachTnuaa } from './MODEL/lakoach-tnuaa' ;
+import { LakoachTnuaa } from './lakoach-tnuaa' ;
 
 export class GetTnuotAggregate {
     success : string;

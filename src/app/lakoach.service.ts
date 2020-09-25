@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
-import {News} from './News';
 import { GetTnuotAggregate } from './get-tnuot-aggregate';
 import { LakoachTnuaa } from './lakoach-tnuaa';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NewsService {
+export class LakoachService {
   protected httpHeaders: HttpHeaders;
 
   url1: string = environment.url + '/lakoach/getTnuotAggregateQuery';
