@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataStorageService } from './data-storage-service';
 import { GetTnuotAggregate } from './get-tnuot-aggregate';
 import { LakoachTnuaa } from './lakoach-tnuaa';
-import {News} from './News';
 import { LakoachService } from './lakoach.service';
 
 @Component({
@@ -11,48 +12,55 @@ import { LakoachService } from './lakoach.service';
 })
 export class AppComponent {
   title = 'news-app';
-  tnuot: LakoachTnuaa[];
   result : GetTnuotAggregate;
   
-    constructor(private newsService: LakoachService) {
-      //  this.newsService.getTnuotAggregateQuery().subscribe(data => {
-      //       console.log("data coming:", data);
-      //       //this.tnuot.push(data.shift());
-      //       this.tnuot = data;
-      //       for (let i = 0; i < data.length; i++){
-      //         this.tnuot[i].id=data[i][3];
-      //         this.tnuot[i].name=data[i][4];
-      //         this.tnuot[i].money=data[i][0];
-      //         this.tnuot[i].esek=data[i][1];
-      //         this.tnuot[i].ccno=data[i][2];
+    constructor(private lakoachService: LakoachService, private dataStore: DataStorageService,private router: Router) {
+      
+      
+             console.log("finish update");
+      
 
-      //       }
-      //       console.log("finish update");
-      //  });
+       this.lakoachService.getTnuotAggregateQueryWithFlag().subscribe(data => {
+       
+        this.result = data;
+        // this.tnuot = data.lakoachTnuaaList;
+        // for (let i = 0; i < data.lakoachTnuaaList.length; i++){
+        //   this.tnuot[i].id=data.lakoachTnuaaList[i][3];
+        //   this.tnuot[i].name=data.lakoachTnuaaList[i][4];
+        //   this.tnuot[i].money=data.lakoachTnuaaList[i][0];
+        //   this.tnuot[i].esek=data.lakoachTnuaaList[i][1];
+        //   this.tnuot[i].ccno=data.lakoachTnuaaList[i][2];
 
-       this.newsService.getTnuotAggregateQueryWithFlag().subscribe(data => {
+        // }
+        console.log("finish update");
+   });
+  }
+
+  ngOnInit() {
+    this.lakoachService.getTnuotAggregateQueryWithFlag().subscribe(data => {
+      console.log("data coming:", data);
+      //this.tnuot.push(data.shift());
+      this.result = data;
+      console.log("finish update");
+    })
+  }
+
+   key: string = 'id';
+   reverse: boolean = false;
+
+     serachById(key) {
+      this.lakoachService.getTnuotAggregateQueryWithId(key).subscribe(data => {
         console.log("data coming:", data);
         //this.tnuot.push(data.shift());
         this.result = data;
-        this.tnuot = data.lakoachTnuaaList;
-        for (let i = 0; i < data.lakoachTnuaaList.length; i++){
-          this.tnuot[i].id=data.lakoachTnuaaList[i][3];
-          this.tnuot[i].name=data.lakoachTnuaaList[i][4];
-          this.tnuot[i].money=data.lakoachTnuaaList[i][0];
-          this.tnuot[i].esek=data.lakoachTnuaaList[i][1];
-          this.tnuot[i].ccno=data.lakoachTnuaaList[i][2];
-
-        }
         console.log("finish update");
-   });
+      })
+      //this.router.navigate(["/AppComponent"]);
 
-    }
-
-  key: string = 'headline';
-  reverse: boolean = false;
-
-  sort(key) {
-    this.key = key;
-    this.reverse = !this.reverse;
-  }
+       
+     }
+  // sort(key) {
+  //   this.key = key;
+  //   this.reverse = !this.reverse;
+  // }
 }
